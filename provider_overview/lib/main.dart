@@ -20,11 +20,14 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider<Dog>(
           create: (context) => Dog(name: 'dog', breed: 'breed', age: 3),
         ),
-        FutureProvider<int>(create: (context) {
-          final int dogAge = context.read<Dog>().age;
-          final babies = Babies(age: dogAge);
-          return babies.getBabies();
-        }, initialData: 0)
+        FutureProvider<int>(
+          create: (context) {
+            final int dogAge = context.read<Dog>().age;
+            final babies = Babies(age: dogAge);
+            return babies.getBabies();
+          },
+          initialData: 0,
+        )
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
