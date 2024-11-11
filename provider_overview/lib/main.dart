@@ -63,7 +63,7 @@ class MyHomePage extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => const ProviderOverview04()),
                 );
               },
-              child: const Text('Overview 04'),
+              child: const Text('ChangeNotifierProvider'),
             ),
             ElevatedButton(
               onPressed: () {
@@ -72,7 +72,7 @@ class MyHomePage extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => const ProviderOverview05()),
                 );
               },
-              child: const Text('Overview 05'),
+              child: const Text('Extension Methods'),
             ),
             ElevatedButton(
               onPressed: () {
