@@ -5,6 +5,7 @@ import 'package:provider_overview/models/dog.dart';
 import 'package:provider_overview/screens/provider_overveiw_04.dart';
 import 'package:provider_overview/screens/provider_overview_05.dart';
 import 'package:provider_overview/screens/provider_overview_06.dart';
+import 'package:provider_overview/screens/provider_overview_07.dart';
 
 void main() {
   runApp(const MyApp());
@@ -80,7 +81,16 @@ class MyHomePage extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => const ProviderOverview06()),
                 );
               },
-              child: const Text('Overview 06'),
+              child: const Text('FutureProvider'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const ProviderOverview07()),
+                );
+              },
+              child: const Text('StreamProvider'),
             ),
           ],
         ),
