@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:provider_overview/models/dog.dart';
 
-class ProviderOverview07 extends StatelessWidget {
-  const ProviderOverview07({super.key});
+class ProviderOverview04 extends StatelessWidget {
+  const ProviderOverview04({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Provider 07'),
+        title: const Text('Provider 04'),
       ),
       body: Center(
         child: Column(
@@ -17,7 +17,7 @@ class ProviderOverview07 extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(
-              '- name: ${context.watch<Dog>().name}',
+              '- name: ${Provider.of<Dog>(context, listen: false).name}',
               style: const TextStyle(fontSize: 20),
             ),
             const SizedBox(height: 10),
@@ -37,7 +37,7 @@ class BreedAndAge extends StatelessWidget {
     return Column(
       children: [
         Text(
-          '- breed : ${context.select<Dog, String>((value) => value.breed)}',
+          '- breed : ${Provider.of<Dog>(context, listen: false).breed}',
           style: const TextStyle(fontSize: 20),
         ),
         const SizedBox(height: 10),
@@ -55,18 +55,12 @@ class Age extends StatelessWidget {
     return Column(
       children: [
         Text(
-          '- age: ${context.select<Dog, int>((value) => value.age)}',
+          '- age: ${Provider.of<Dog>(context).age}',
           style: const TextStyle(fontSize: 20),
         ),
-        const SizedBox(height: 10),
-        Text(
-          '- number of babies: ${context.watch<int>()}',
-          style: const TextStyle(fontSize: 20),
-        ),
-        const SizedBox(height: 10),
         ElevatedButton(
           onPressed: () {
-            context.read<Dog>().grow();
+            Provider.of<Dog>(context, listen: false).grow();
           },
           child: const Text('Grow'),
         ),

@@ -1,8 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:provider_overview/models/babies.dart';
 import 'package:provider_overview/models/dog.dart';
-import 'package:provider_overview/screens/provider_overveiw_04.dart';
+import 'package:provider_overview/screens/provider_overview_04.dart';
 import 'package:provider_overview/screens/provider_overview_05.dart';
 import 'package:provider_overview/screens/provider_overview_06.dart';
 import 'package:provider_overview/screens/provider_overview_07.dart';
@@ -35,6 +36,10 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
+          dialogTheme: const DialogTheme(
+            backgroundColor: Colors.white,  // 앱 전체 다이얼로그 배경색 설정
+            surfaceTintColor: Colors.white,
+          ),
         ),
         home: const MyHomePage(),
       ),
