@@ -60,7 +60,12 @@ class Age extends StatelessWidget {
         ),
         const SizedBox(height: 10),
         Text(
-          '- number of babies: ${context.watch<int>()}',
+          '- number of babies: ${context.read<int>()}',
+          style: const TextStyle(fontSize: 20),
+        ),
+        const SizedBox(height: 10),
+        Text(
+          '- ${context.watch<String>()}',
           style: const TextStyle(fontSize: 20),
         ),
         const SizedBox(height: 10),

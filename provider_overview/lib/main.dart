@@ -29,6 +29,14 @@ class MyApp extends StatelessWidget {
             return babies.getBabies();
           },
           initialData: 0,
+        ),
+        StreamProvider<String>(
+          create: (context) {
+            final int dogAge = context.read<Dog>().age;
+            final babies = Babies(age: dogAge * 2);
+            return babies.bark();
+          },
+          initialData: 'Bark 0 times',
         )
       ],
       child: MaterialApp(
@@ -37,7 +45,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
           dialogTheme: const DialogTheme(
-            backgroundColor: Colors.white,  // 앱 전체 다이얼로그 배경색 설정
+            backgroundColor: Colors.white, // 앱 전체 다이얼로그 배경색 설정
             surfaceTintColor: Colors.white,
           ),
         ),
