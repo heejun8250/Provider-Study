@@ -8,6 +8,7 @@ import 'package:provider_overview/screens/provider_overview_05.dart';
 import 'package:provider_overview/screens/provider_overview_06.dart';
 import 'package:provider_overview/screens/provider_overview_07.dart';
 import 'package:provider_overview/screens/provider_overview_08.dart';
+import 'package:provider_overview/screens/provider_overview_09.dart';
 
 void main() {
   runApp(const MyApp());
@@ -114,6 +115,15 @@ class MyHomePage extends StatelessWidget {
                 );
               },
               child: const Text('Consumer'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const ProviderOverview09()),
+                );
+              },
+              child: const Text('ProviderNotFoundException'),
             ),
           ],
         ),
