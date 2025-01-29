@@ -1,10 +1,16 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:provider_overview/models/babies.dart';
 import 'package:provider_overview/models/dog.dart';
-import 'package:provider_overview/screens/provider_overveiw_04.dart';
+import 'package:provider_overview/screens/provider_overview_04.dart';
 import 'package:provider_overview/screens/provider_overview_05.dart';
 import 'package:provider_overview/screens/provider_overview_06.dart';
+import 'package:provider_overview/screens/provider_overview_07.dart';
+import 'package:provider_overview/screens/provider_overview_08.dart';
+import 'package:provider_overview/screens/provider_overview_09.dart';
+import 'package:provider_overview/screens/provider_overview_10.dart';
+import 'package:provider_overview/screens/provider_overview_11.dart';
 
 void main() {
   runApp(const MyApp());
@@ -27,6 +33,14 @@ class MyApp extends StatelessWidget {
             return babies.getBabies();
           },
           initialData: 0,
+        ),
+        StreamProvider<String>(
+          create: (context) {
+            final int dogAge = context.read<Dog>().age;
+            final babies = Babies(age: dogAge * 2);
+            return babies.bark();
+          },
+          initialData: 'Bark 0 times',
         )
       ],
       child: MaterialApp(
@@ -34,6 +48,10 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
+          dialogTheme: const DialogTheme(
+            backgroundColor: Colors.white, // 앱 전체 다이얼로그 배경색 설정
+            surfaceTintColor: Colors.white,
+          ),
         ),
         home: const MyHomePage(),
       ),
@@ -62,7 +80,7 @@ class MyHomePage extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => const ProviderOverview04()),
                 );
               },
-              child: const Text('Overview 04'),
+              child: const Text('ChangeNotifierProvider'),
             ),
             ElevatedButton(
               onPressed: () {
@@ -71,7 +89,7 @@ class MyHomePage extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => const ProviderOverview05()),
                 );
               },
-              child: const Text('Overview 05'),
+              child: const Text('Extension Methods'),
             ),
             ElevatedButton(
               onPressed: () {
@@ -80,7 +98,52 @@ class MyHomePage extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => const ProviderOverview06()),
                 );
               },
-              child: const Text('Overview 06'),
+              child: const Text('FutureProvider'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const ProviderOverview07()),
+                );
+              },
+              child: const Text('StreamProvider'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const ProviderOverview08()),
+                );
+              },
+              child: const Text('Consumer'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const ProviderOverview09()),
+                );
+              },
+              child: const Text('ProviderNotFoundException'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const ProviderOverview10()),
+                );
+              },
+              child: const Text('Selector'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const ProviderOverview11()),
+                );
+              },
+              child: const Text('ProviderNotFoundException2'),
             ),
           ],
         ),
