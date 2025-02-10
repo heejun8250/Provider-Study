@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:open_weather_provider/pages/home_page.dart';
+import 'package:open_weather_provider/providers/providers.dart';
 import 'package:open_weather_provider/providers/weather/weather_provider.dart';
 import 'package:open_weather_provider/repositories/weather_repository.dart';
 import 'package:open_weather_provider/services/weather_api_services.dart';
@@ -31,13 +32,17 @@ class MyApp extends StatelessWidget {
             weatherRepository: context.read(),
           ),
         ),
-      ],
-      child: MaterialApp(
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-          useMaterial3: true,
+        ChangeNotifierProvider<TempSettingsProvider>(
+          create: (context) => TempSettingsProvider(),
         ),
+        ChangeNotifierProxyProvider<WeatherProvider, ThemeProvider>(
+          create: (context) => ThemeProvider(),
+          update: (context, WeatherProvider weatherProvider, ThemeProvider? themeProvider) => themeProvider!..update(weatherProvider),
+        )
+      ],
+      builder: (context, _) => MaterialApp(
+        title: 'Flutter Demo',
+        theme: context.watch<ThemeProvider>().state.appTheme == AppTheme.light ? ThemeData.light() : ThemeData.dark(),
         debugShowCheckedModeBanner: false,
         home: const HomePage(),
       ),
